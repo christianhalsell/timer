@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Timer</title>
-    <link rel="stylesheet" href="css/styles.css" type="text/css">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <title>Timer</title>
+  <link rel="stylesheet" href="css/styles.css" type="text/css">
+</head>
 
-  <body>
-    <div id="wrapper" class="green">
-      <div id="time">
-        <div id="display"></div>
-      </div>
-
-      <button id="pauseBtn">Pause</button>
+<body>
+  <div id="wrapper" class="green">
+    <div id="time" class="time">
+      <div id="display"></div>
     </div>
 
-    <script src="js/scripts.js"></script>
-  </body>
+    <button id="pauseBtn">Start</button>
+
+    <div id="modal" class="modal">
+      <div>
+        <label>Total Time</label>
+        <input id="displayTotalMinutes" size="2">
+        :
+        <input id="displayTotalSeconds" size="2">
+      </div>
+
+      <div>
+        <label>Show warning at</label>
+        <input id="displayWarningMinutes" size="2">
+        :
+        <input id="displayWarningSeconds" size="2">
+      </div>
+
+      <button id="submitTime">Go</button>
+    </div>
+  </div>
+
+  <script src="js/scripts.js"></script>
+</body>
 </html>

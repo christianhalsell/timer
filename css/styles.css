@@ -9,12 +9,30 @@ body {
   overflow: hidden;
 }
 
-#time {
+.hide {
+  display: none !important;
+}
+
+.modal {
+  display: block;
+  width: 50vw;
+  height: 70vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  background-color: lavender;
+}
+
+.time {
   flex: 1;
   font-size: 300px;
   text-align: center;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
 }
+
+
 
 .green {
   background-color: #22ab22;
@@ -24,8 +42,12 @@ body {
   background-color: #e67e22;
 }
 
+.yellow {
+  background-color: #ff0;
+}
+
 .red {
-  background-color: #900;
+  background-color: #c00;
 }
 
 .text-white {
