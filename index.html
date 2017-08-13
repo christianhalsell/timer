@@ -8,28 +8,28 @@
 
 <body>
   <div id="wrapper" class="green">
-    <div id="time" class="time">
+    <div id="time" class="time hide">
       <div id="display"></div>
-    </div>
 
-    <button id="pauseBtn">Start</button>
+      <button id="pauseBtn" class="button button-start">Start</button>
+    </div>
 
     <div id="modal" class="modal">
       <div>
         <label>Total Time</label>
-        <input id="displayTotalMinutes" size="2">
+        <input id="displayTotalMinutes" size="2" maxlength="2">
         :
-        <input id="displayTotalSeconds" size="2">
+        <input id="displayTotalSeconds" size="2" maxlength="2">
       </div>
 
       <div>
         <label>Show warning at</label>
-        <input id="displayWarningMinutes" size="2">
+        <input id="displayWarningMinutes" size="2" maxlength="2">
         :
-        <input id="displayWarningSeconds" size="2">
+        <input id="displayWarningSeconds" size="2" maxlength="2">
       </div>
 
-      <button id="submitTime">Go</button>
+      <button id="submitTime" class="button button-submit">Submit Time</button>
     </div>
   </div>
 

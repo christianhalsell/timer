@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -13,16 +17,37 @@ body {
   display: none !important;
 }
 
+.button {
+  font-size: 20px;
+  border-radius: 6px;
+  background-color: lavender;
+  border: 1px solid #222;
+  cursor: pointer;
+}
+
+.button-submit {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+}
+
+.button-start {
+  position: absolute;
+  bottom: 30px;
+}
+
 .modal {
   display: block;
-  width: 50vw;
-  height: 70vh;
+  width: 400px;
+  height: 200px;
+  font-size: 20px;
   position: absolute;
+  padding: 40px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 20px;
-  background-color: lavender;
+  background-color: #eee;
 }
 
 .time {
@@ -31,8 +56,6 @@ body {
   text-align: center;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
 }
-
-
 
 .green {
   background-color: #22ab22;
