@@ -1,4 +1,5 @@
 // TODO: if input is blank, make it zero
+// TODO: https://stackoverflow.com/questions/39811896/localstorage-array
 
 const wrapper = document.getElementById('wrapper');
 const time = document.getElementById('time');
@@ -17,6 +18,7 @@ let seconds = 0;
 let minutesWarning = 0;
 let secondsWarning = 0;
 
+// get localStorage
 let savedMinutes = localStorage.getItem('totalMinutes');
 let savedSeconds = localStorage.getItem('totalSeconds');
 let savedWarningMinutes = localStorage.getItem('warningMinutes');
@@ -37,12 +39,8 @@ function submitTime() {
 };
 
 function displayTime() {
-    let displaySeconds = seconds;
+    let displaySeconds = ('0' + seconds).slice(-2);
     let displayMinutes = minutes;
-
-    if (seconds <= 9 && seconds >= 0) {
-      displaySeconds = ('0' + seconds).toString();
-    }
 
     display.innerHTML = displayMinutes + ':' + displaySeconds;
     console.log(`${displayMinutes}:${displaySeconds}`);
@@ -87,8 +85,7 @@ submitBtn.addEventListener('click', function () {
     if (isNaN(minutes) || isNaN(seconds) || isNaN(minutesWarning) || isNaN(secondsWarning)) {
         alert('You must enter numbers for time, silly!');
     } else {
-
-        // Add to local storage
+        // Add to localStorage
         localStorage.setItem('totalMinutes', minutes);
         localStorage.setItem('totalSeconds', seconds);
         localStorage.setItem('warningMinutes', minutesWarning);
