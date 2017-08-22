@@ -16,7 +16,6 @@ let minutesWarning = 0;
 let secondsWarning = 0;
 
 function checkSavedTime() {
-
     let saveTime = localStorage.getItem('time');
     saveTime = saveTime ? JSON.parse(saveTime) : {};
 
@@ -86,7 +85,6 @@ submitBtn.addEventListener('click', function () {
     if (isNaN(minutes) || isNaN(seconds) || isNaN(minutesWarning) || isNaN(secondsWarning)) {
         alert('You must enter numbers for time, silly!');
     } else {
-        // Add to localStorage
         let newTime = {
             'minutes': minutes,
             'seconds': seconds,
