@@ -1,6 +1,3 @@
-// TODO: if input is blank, make it zero
-// TODO: https://stackoverflow.com/questions/39811896/localstorage-array
-
 const wrapper = document.getElementById('wrapper');
 const time = document.getElementById('time');
 const display = document.getElementById('display');
@@ -18,13 +15,16 @@ let seconds = 0;
 let minutesWarning = 0;
 let secondsWarning = 0;
 
-// get localStorage
-let savedMinutes = localStorage.getItem('totalMinutes');
-let savedSeconds = localStorage.getItem('totalSeconds');
-let savedWarningMinutes = localStorage.getItem('warningMinutes');
-let savedWarningSeconds = localStorage.getItem('secondsWarning');
-
 function checkSavedTime() {
+
+    let saveTime = localStorage.getItem('time');
+    saveTime = saveTime ? JSON.parse(saveTime) : {};
+
+    let savedMinutes = saveTime.minutes;
+    let savedSeconds = saveTime.seconds;
+    let savedWarningMinutes = saveTime.minutesWarning;
+    let savedWarningSeconds = saveTime.secondsWarning;
+
     displayTotalMinutes.value = savedMinutes ? savedMinutes : null;
     displayTotalSeconds.value = savedSeconds ? savedSeconds : null;
     displayWarningMinutes.value = savedWarningMinutes ? savedWarningMinutes : null;
@@ -32,10 +32,10 @@ function checkSavedTime() {
 }
 
 function submitTime() {
-    minutes = parseInt(displayTotalMinutes.value);
-    seconds = parseInt(displayTotalSeconds.value);
-    minutesWarning = parseInt(displayWarningMinutes.value);
-    secondsWarning = parseInt(displayWarningSeconds.value);
+    minutes = parseInt(displayTotalMinutes.value || 0);
+    seconds = parseInt(displayTotalSeconds.value || 0);
+    minutesWarning = parseInt(displayWarningMinutes.value || 0);
+    secondsWarning = parseInt(displayWarningSeconds.value || 0);
 };
 
 function displayTime() {
@@ -59,6 +59,7 @@ function countdown() {
 
     if (seconds === 0 && minutes === 0) {
         paused = true;
+        pauseBtn.classList.add('hide');
         wrapper.className = 'red';
         console.log('time\'s up!');
     } else if (seconds <= secondsWarning && minutes <= minutesWarning) {
@@ -86,10 +87,14 @@ submitBtn.addEventListener('click', function () {
         alert('You must enter numbers for time, silly!');
     } else {
         // Add to localStorage
-        localStorage.setItem('totalMinutes', minutes);
-        localStorage.setItem('totalSeconds', seconds);
-        localStorage.setItem('warningMinutes', minutesWarning);
-        localStorage.setItem('secondsWarning', secondsWarning);
+        let newTime = {
+            'minutes': minutes,
+            'seconds': seconds,
+            'minutesWarning': minutesWarning,
+            'secondsWarning': secondsWarning
+        }
+
+        localStorage.setItem('time', JSON.stringify(newTime));
 
         time.classList.remove('hide');
         displayTime();
@@ -97,6 +102,5 @@ submitBtn.addEventListener('click', function () {
     }
 })
 pauseBtn.addEventListener('click', pauseCheck);
-
 checkSavedTime();
 setInterval(countdown, 1000);
